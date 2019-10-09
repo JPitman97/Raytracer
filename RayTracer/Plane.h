@@ -9,11 +9,11 @@ private:
 
 public:
 	Plane();
-	Plane(const glm::vec3& _normal, const double& _distance, const Colour& _colour);
+	Plane(const glm::vec3& _normal, const double& _distance, Colour _colour);
 	glm::vec3& getPlaneNormal();
 	double& getPlaneDistance();
 	Colour getColor() override;
 	glm::vec3& getNormalAtPoint(const glm::vec3 _point);
-	double findIntersection(Ray ray);
+	double findIntersection(Ray ray) override;
 };
 

@@ -10,7 +10,7 @@ public:
 	virtual ~Object() = default;
 	Object();
 	virtual Colour getColor();
-	virtual double findIntersection(Ray _ray);
+	virtual double findIntersection(Ray _ray) = 0;
 };
 
 #endif

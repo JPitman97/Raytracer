@@ -1,5 +1,6 @@
 #include "Sphere.h"
 
+
 Sphere::Sphere()
 {
 	center = glm::vec3(0, 0, 0);
@@ -30,45 +31,44 @@ Colour Sphere::getColor()
 
 glm::vec3& Sphere::getNormalAt(const glm::vec3& _point)
 {
-	glm::vec3 t = -center;
-	glm::vec3 y = glm::normalize(t);
-	glm::vec3 normal = _point + y;
-	return normal;
+	glm::vec3 normal_Vect = _point + (-center);
+	normal_Vect = glm::normalize(normal_Vect);
+	return normal_Vect;
 }
 
-double Sphere::findIntersections(Ray& ray)
+double Sphere::findIntersection(Ray _ray)
 {
-	glm::vec3 rayOrigin = ray.getOrigin();
-	glm::vec3 rayDir = ray.getDirection();
-	glm::vec3 sphereCenter = center;
+	//Vect ray_origin (_ray.getOrigin().x, _ray.getOrigin().y, _ray.getOrigin().z);
+	glm::vec3 ray_origin = _ray.getOrigin();
 
-	double b = (2 * (rayOrigin.x - sphereCenter.x) * rayDir.x) 
-	+ (2 * (rayOrigin.y - sphereCenter.y) * rayDir.y) 
-	+ (2 * (rayOrigin.z - sphereCenter.z) * rayDir.z);
-	double c = pow(rayOrigin.x - sphereCenter.x, 2) 
-	+ pow(rayOrigin.y - sphereCenter.y, 2) 
-	+ pow(rayOrigin.z - sphereCenter.z, 2) 
-	- (radius*radius);
+
+	glm::vec3 ray_direction = _ray.getDirection();
+
+
+	double a = 1; // normalized
+	double b = (2 * (ray_origin.x - center.x) * ray_direction.x) + (2 * (ray_origin.y - center.y) * ray_direction.y) + (2 * (ray_origin.z - center.z) * ray_direction.z);
+	double c = pow(ray_origin.x - center.x, 2) + pow(ray_origin.y - center.y, 2) + pow(ray_origin.z - center.z, 2) - (radius * radius);
 
 	double discriminant = b * b - 4 * c;
 
-	if (discriminant > 0)
-	{
-		//Ray intersects sphere
-		double root1 = ((-1 * b - sqrt(discriminant)) / 2) - 0.000001;
+	if (discriminant > 0) {
+		/// the ray intersects the sphere
 
-		if (root1 > 0)
-		{
-			return root1;
+		// the first root
+		double root_1 = ((-1 * b - sqrt(discriminant)) / 2) - 0.000001;
+
+		if (root_1 > 0) {
+			// the first root is the smallest positive root
+			return root_1;
 		}
-		else
-		{
-			double root2 = ((sqrt(discriminant) - b) / 2) - 0.000001;
-			return root2;
+		else {
+			// the second root is the smallest positive root
+			double root_2 = ((sqrt(discriminant) - b) / 2) - 0.000001;
+			return root_2;
 		}
 	}
-	else 
-	{ //The ray did not intersect
+	else {
+		// the ray missed the sphere
 		return -1;
 	}
 }

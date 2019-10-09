@@ -21,7 +21,7 @@ public:
 	Colour getColor() override;
 
 	glm::vec3& getNormalAt(const glm::vec3& _point);
-	double findIntersections(Ray& ray);
+	double findIntersection(Ray _ray) override;
 };
 
 #endif

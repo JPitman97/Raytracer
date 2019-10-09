@@ -1,4 +1,5 @@
 #include "Plane.h"
+#include <utility>
 
 Plane::Plane()
 {
@@ -7,10 +8,10 @@ Plane::Plane()
 	colour = Colour(glm::vec4(0.5f, 0.5f, 0.5f, 0));
 }
 
-Plane::Plane(const glm::vec3& _normal, const double& _distance, const Colour& _colour)
+Plane::Plane(const glm::vec3& _normal, const double& _distance, Colour _colour)
 	: normal(_normal),
 	  distance(_distance),
-	  colour(_colour)
+	  colour(std::move(_colour))
 {
 }
 
@@ -41,7 +42,6 @@ double Plane::findIntersection(Ray ray)
 
 	if (a != 0)
 	{
-		//WTF IS THIS?????
 		glm::vec3 e (normal.x * distance, normal.y * distance, normal.z * distance);
 		glm::vec3 t = ray.getOrigin() + -e;
 		double b = glm::dot(normal, t);
