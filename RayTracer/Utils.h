@@ -6,7 +6,7 @@
 #include "GLM/glm.hpp"
 #undef main()
 
-//Formerly MCG_GFX_LIB
+//Formerly MCG_GFX_LIB - Supplied by Bournemouth University
 
 SDL_Renderer* _renderer;
 SDL_Window* _window;
