@@ -5,13 +5,12 @@ Sphere::Sphere()
 {
 	center = glm::vec3(0, 0, 0);
 	radius = 1;
-	colour = Colour(glm::vec4(0.5f, 0.5f, 0.5f, 0));
 }
 
-Sphere::Sphere(const glm::vec3& _center, const double& _radius, const Colour& _colour)
+Sphere::Sphere(const glm::vec3& _center, const double& _radius, const Material& _material)
 	: center(_center),
 	  radius(_radius),
-	  colour(_colour)
+	  material(_material)
 {}
 
 glm::vec3& Sphere::getSphereCenter()
@@ -24,51 +23,22 @@ double& Sphere::getSphereRadius()
 	return radius;
 }
 
-Colour Sphere::getColor()
+Material Sphere::getSphereMaterial()
 {
-	return colour;
+	return material;
 }
 
-glm::vec3& Sphere::getNormalAt(const glm::vec3& _point)
+bool Sphere::findIntersection(const glm::vec3& _origin, const glm::vec3& _direction, float& t0)
 {
-	glm::vec3 normal_Vect = _point + (-center);
-	normal_Vect = glm::normalize(normal_Vect);
-	return normal_Vect;
-}
-
-double Sphere::findIntersection(Ray _ray)
-{
-	//Vect ray_origin (_ray.getOrigin().x, _ray.getOrigin().y, _ray.getOrigin().z);
-	glm::vec3 ray_origin = _ray.getOrigin();
-
-
-	glm::vec3 ray_direction = _ray.getDirection();
-
-
-	double a = 1; // normalized
-	double b = (2 * (ray_origin.x - center.x) * ray_direction.x) + (2 * (ray_origin.y - center.y) * ray_direction.y) + (2 * (ray_origin.z - center.z) * ray_direction.z);
-	double c = pow(ray_origin.x - center.x, 2) + pow(ray_origin.y - center.y, 2) + pow(ray_origin.z - center.z, 2) - (radius * radius);
-
-	double discriminant = b * b - 4 * c;
-
-	if (discriminant > 0) {
-		/// the ray intersects the sphere
-
-		// the first root
-		double root_1 = ((-1 * b - sqrt(discriminant)) / 2) - 0.000001;
-
-		if (root_1 > 0) {
-			// the first root is the smallest positive root
-			return root_1;
-		}
-		else {
-			// the second root is the smallest positive root
-			double root_2 = ((sqrt(discriminant) - b) / 2) - 0.000001;
-			return root_2;
-		}
-	}
-	else {
-		// the ray missed the sphere
-		return -1;
-	}
+	glm::vec3 L = center - _origin;
+	float tca = L.x  * _direction.x + L.y * _direction.y + L.z * _direction.z;
+	float d2 = (L.x * L.x + L.y * L.y + L.z * L.z) - tca * tca;
+	if (d2 > (radius * radius))
+		return false;
+	float thc = sqrt(radius * radius - d2);
+	t0 = tca - thc;
+	float t1 = tca + thc;
+	if (t0 < 0)
+		t0 = t1;
+	return t0 >= 0;
 }

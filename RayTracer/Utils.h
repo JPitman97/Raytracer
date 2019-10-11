@@ -4,6 +4,7 @@
 #include <iostream>
 #include "SDL/SDL.h"
 #include "GLM/glm.hpp"
+#include <vector>
 #undef main()
 
 //Formerly MCG_GFX_LIB - Supplied by Bournemouth University
@@ -12,6 +13,8 @@ SDL_Renderer* _renderer;
 SDL_Window* _window;
 glm::ivec2 _winSize;
 unsigned int _lastTime;
+const int WIDTH = 1024;
+const int HEIGHT = 768;
 
 bool Init(glm::ivec2 windowSize)
 {

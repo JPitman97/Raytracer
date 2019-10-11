@@ -2,26 +2,24 @@
 #define _SPHERE_H_
 
 #include "GLM/glm.hpp"
-#include "Colour.h"
-#include "Object.h"
+#include "Material.h"
 
-class Sphere : public Object
+class Sphere
 {
 private:
 	glm::vec3 center;
 	double radius;
-	Colour colour;
+	Material material;
 
 public:
 	Sphere();
-	Sphere(const glm::vec3& _center, const double& _radius, const Colour& _colour);
+	Sphere(const glm::vec3& _center, const double& _radius, const Material& _material);
 
 	glm::vec3& getSphereCenter();
 	double& getSphereRadius();
-	Colour getColor() override;
+	Material getSphereMaterial();
 
-	glm::vec3& getNormalAt(const glm::vec3& _point);
-	double findIntersection(Ray _ray) override;
+	bool findIntersection(const glm::vec3& _origin, const glm::vec3& _direction, float& t0);
 };
 
 #endif
