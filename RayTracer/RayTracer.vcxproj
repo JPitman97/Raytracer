@@ -136,13 +136,15 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="geometry.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>

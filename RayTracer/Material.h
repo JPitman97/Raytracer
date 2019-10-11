@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _MATERIAL_H_
+#define _MATERIAL_H_
+
 #include <GLM/glm.hpp>
 
 class Material
@@ -13,3 +15,4 @@ private:
 	glm::ivec3 diffuse_colour;
 };
 
+#endif
