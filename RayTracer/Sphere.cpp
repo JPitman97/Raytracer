@@ -1,6 +1,11 @@
 #include "Sphere.h"
 
 
+void Sphere::setSphereCenter(const glm::vec3& center)
+{
+	this->center = center;
+}
+
 Sphere::Sphere()
 {
 	center = glm::vec3(0, 0, 0);

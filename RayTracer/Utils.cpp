@@ -5,7 +5,8 @@ SDL_Window* _window;
 glm::ivec2 _winSize;
 unsigned int _lastTime;
 
-bool Init(glm::ivec2 windowSize)
+
+bool MCG::Init(glm::ivec2 windowSize)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
@@ -65,7 +66,7 @@ bool Init(glm::ivec2 windowSize)
 	return true;
 }
 
-void SetBackground(glm::ivec3 colour)
+void MCG::SetBackground(glm::ivec3 colour)
 {
 	// Set the colour for drawing
 	SDL_SetRenderDrawColor(_renderer, colour.r, colour.g, colour.b, 255);
@@ -73,7 +74,7 @@ void SetBackground(glm::ivec3 colour)
 	SDL_RenderClear(_renderer);
 }
 
-void DrawPixel(glm::ivec2 position, glm::ivec3 colour)
+void MCG::DrawPixel(glm::ivec2 position, glm::ivec3 colour)
 {
 	// Set the colour for drawing
 	SDL_SetRenderDrawColor(_renderer, colour.r, colour.g, colour.b, 255);
@@ -81,7 +82,7 @@ void DrawPixel(glm::ivec2 position, glm::ivec3 colour)
 	SDL_RenderDrawPoint(_renderer, position.x, position.y);
 }
 
-bool ProcessFrame()
+bool MCG::ProcessFrame()
 {
 	// This tells the renderer to actually show its contents to the screen
 	// This is specific to the SDL drawing commands. When we start with OpenGL we will need to use a different command here
@@ -150,13 +151,13 @@ bool ProcessFrame()
 	return true;
 }
 
-void Cleanup()
+void MCG::Cleanup()
 {
 	SDL_DestroyWindow(_window);
 	SDL_Quit();
 }
 
-int ShowAndHold()
+int MCG::ShowAndHold()
 {
 	// Show
 

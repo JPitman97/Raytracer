@@ -12,7 +12,7 @@ void Renderer::render(std::vector<Sphere>& _spheres, std::vector<Light>& _lights
 			float y = -(2 * (j + 0.5) / (float)HEIGHT - 1) * tan(fov / 2.);
 			glm::vec3 dir = glm::normalize(glm::vec3(x, y, -1));
 			Ray ray;
-			DrawPixel(glm::ivec2(i, j), ray.castRay(glm::vec3(0, 0, 0), dir, _spheres, _lights));
+			MCG::DrawPixel(glm::ivec2(i, j), ray.castRay(glm::vec3(0, 0, 0), dir, _spheres, _lights));
 		}
 	}
 }

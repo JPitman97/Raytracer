@@ -8,6 +8,8 @@ class Sphere
 {
 private:
 	glm::vec3 center;
+	
+private:
 	double radius;
 	Material material;
 
@@ -15,6 +17,7 @@ public:
 	Sphere();
 	Sphere(const glm::vec3& _center, const double& _radius, const Material& _material);
 
+	void setSphereCenter(const glm::vec3& center);
 	glm::vec3& getSphereCenter();
 	double& getSphereRadius();
 	Material getSphereMaterial();

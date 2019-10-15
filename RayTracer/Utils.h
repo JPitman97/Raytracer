@@ -9,19 +9,21 @@
 
 //Formerly MCG_GFX_LIB - Supplied by Bournemouth University
 
-const int WIDTH = 1024;
-const int HEIGHT = 768;
+const int WIDTH = 1280;
+const int HEIGHT = 720;
 
-bool Init(glm::ivec2 windowSize);
+namespace MCG
+{
+	bool Init(glm::ivec2 windowSize);
 
-void SetBackground(glm::ivec3 colour);
+	void SetBackground(glm::ivec3 colour);
 
-void DrawPixel(glm::ivec2 position, glm::ivec3 colour);
+	void DrawPixel(glm::ivec2 position, glm::ivec3 colour);
 
-bool ProcessFrame();
+	bool ProcessFrame();
 
-void Cleanup();
+	void Cleanup();
 
-int ShowAndHold();
-
+	int ShowAndHold();
+}
 #endif
