@@ -1,4 +1,5 @@
 #include "Utils.h"
+#include <mutex>
 
 SDL_Renderer* _renderer;
 SDL_Window* _window;
@@ -73,13 +74,16 @@ void MCG::SetBackground(glm::ivec3 colour)
 	// Clear the entire screen to our selected colour
 	SDL_RenderClear(_renderer);
 }
+std::mutex renderLock;
 
 void MCG::DrawPixel(glm::ivec2 position, glm::ivec3 colour)
 {
+	renderLock.lock();
 	// Set the colour for drawing
 	SDL_SetRenderDrawColor(_renderer, colour.r, colour.g, colour.b, 255);
 	// Draw our pixel
 	SDL_RenderDrawPoint(_renderer, position.x, position.y);
+	renderLock.unlock();
 }
 
 bool MCG::ProcessFrame()

@@ -5,6 +5,7 @@
 #include "SDL/SDL.h"
 #include "GLM/glm.hpp"
 #include <vector>
+
 #undef main()
 
 //Formerly MCG_GFX_LIB - Supplied by Bournemouth University
@@ -25,5 +26,6 @@ namespace MCG
 	void Cleanup();
 
 	int ShowAndHold();
+
 }
 #endif

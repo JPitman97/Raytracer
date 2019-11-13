@@ -1,0 +1,14 @@
+﻿  Light.cpp
+h:\final-year-work\graphics and computational graphics\raytracer\raytracer\light.h(4): fatal error C1083: Cannot open include file: 'GLM/glm.hpp': No such file or directory
+  main.cpp
+h:\final-year-work\graphics and computational graphics\raytracer\raytracer\sphere.h(4): fatal error C1083: Cannot open include file: 'GLM/glm.hpp': No such file or directory
+  Material.cpp
+h:\final-year-work\graphics and computational graphics\raytracer\raytracer\material.h(4): fatal error C1083: Cannot open include file: 'GLM/glm.hpp': No such file or directory
+  Ray.cpp
+h:\final-year-work\graphics and computational graphics\raytracer\raytracer\ray.h(4): fatal error C1083: Cannot open include file: 'GLM/glm.hpp': No such file or directory
+  Renderer.cpp
+h:\final-year-work\graphics and computational graphics\raytracer\raytracer\sphere.h(4): fatal error C1083: Cannot open include file: 'GLM/glm.hpp': No such file or directory
+  Sphere.cpp
+h:\final-year-work\graphics and computational graphics\raytracer\raytracer\sphere.h(4): fatal error C1083: Cannot open include file: 'GLM/glm.hpp': No such file or directory
+  Utils.cpp
+h:\final-year-work\graphics and computational graphics\raytracer\raytracer\utils.h(8): warning C4067: unexpected tokens following preprocessor directive - expected a newline

@@ -21,26 +21,25 @@ int main()
 	std::vector<Light> lights;
 	lights.emplace_back(glm::vec3(-20, 20, 20), 0.8f);
 
+	MCG::SetBackground(glm::ivec3(255, 255, 255));
+	Renderer::render(spheres, lights);
 
-	//std::cout << "Finished rendering" << std::endl;
-	//ShowAndHold();
+	std::cout << "Finished rendering" << std::endl;
+	MCG::ShowAndHold();
 
 	// Variable to keep track of time
-	float timer = 0.0f;
-	while (MCG::ProcessFrame())
-	{
-		// Set every pixel to the same colour
-		MCG::SetBackground(glm::ivec3(0, 0, 0));
+	//float timer = 0.0f;
+	//while (MCG::ProcessFrame())
+	//{
+	//	// Set every pixel to the same colour
+	//	MCG::SetBackground(glm::ivec3(255, 255, 255));
 
-		// Change our pixel's X coordinate according to time
-		const glm::vec3 spherePos = spheres[1].getSphereCenter();
-		spheres[1].setSphereCenter(glm::vec3(spherePos.x, sin(5 * timer) * 5, spherePos.z));
-		// Update our time variable
-		timer += 1.0f / 60.0f;
+	//	// Update our time variable
+	//	timer += 1.0f / 60.0f;
 
-		// Draw the pixel to the screen
-		Renderer::render(spheres, lights);
-	}
+	//	// Draw the pixel to the screen
+	//	Renderer::render(spheres, lights);
+	//}
 
 	return 0;
 }
