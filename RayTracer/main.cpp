@@ -8,38 +8,33 @@ int main()
 	if (!MCG::Init(glm::ivec2(WIDTH, HEIGHT)))
 		return -1;
 
-	Material LimeMat(glm::ivec3(3, 252, 111));
-	Material BlueMat(glm::ivec3(2, 140, 245));
-	Material PinkMat(glm::ivec3(240, 14, 191));
+	//Material(Albedo, Colour, Specular)
+	Material LimeMat(glm::vec2(0.6, 0.3), glm::vec3(3, 252, 111), 50.0f);
+	Material BlueMat(glm::vec2(0.7, 0.9), glm::vec3(2, 140, 245), 20.0f); // Clipping
+	Material PinkMat(glm::vec2(0.5, 0.6), glm::vec3(240, 14, 191), 30.0f);
 
 	std::vector<Sphere> spheres;
-	spheres.emplace_back(glm::vec3(-3, 0, -16), 1, BlueMat);
-	spheres.emplace_back(glm::vec3(0, 0, -16), 2, LimeMat); //Center sphere
-	spheres.emplace_back(glm::vec3(5, 0, -16), 3, PinkMat);
+	//Sphere(Center, Radius, Material)
+	spheres.emplace_back(glm::vec3(-6, -3, -16), 1, BlueMat);
+	spheres.emplace_back(glm::vec3(0, -3, -16), 2, LimeMat); //Center sphere
+	spheres.emplace_back(glm::vec3(6, -3, -16), 3, PinkMat);
+
+	spheres.emplace_back(glm::vec3(-6, 5, -20), 2, LimeMat);
+	spheres.emplace_back(glm::vec3(0, 5, -20), 2, PinkMat); //Center sphere
+	spheres.emplace_back(glm::vec3(6, 5, -20), 2, BlueMat);
 
 
 	std::vector<Light> lights;
-	lights.emplace_back(glm::vec3(-20, 20, 20), 0.8f);
+	//Light(Position, Intensity(0-1))
+	lights.emplace_back(glm::vec3(-20, 20, 20), 0.5f);
+	lights.emplace_back(glm::vec3(30, 50, -25), 0.8);
+	lights.emplace_back(glm::vec3(30, 20, 30), 0.7);
 
 	MCG::SetBackground(glm::ivec3(255, 255, 255));
 	Renderer::render(spheres, lights);
 
 	std::cout << "Finished rendering" << std::endl;
 	MCG::ShowAndHold();
-
-	// Variable to keep track of time
-	//float timer = 0.0f;
-	//while (MCG::ProcessFrame())
-	//{
-	//	// Set every pixel to the same colour
-	//	MCG::SetBackground(glm::ivec3(255, 255, 255));
-
-	//	// Update our time variable
-	//	timer += 1.0f / 60.0f;
-
-	//	// Draw the pixel to the screen
-	//	Renderer::render(spheres, lights);
-	//}
 
 	return 0;
 }

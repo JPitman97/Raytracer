@@ -5,6 +5,7 @@
 #include "SDL/SDL.h"
 #include "GLM/glm.hpp"
 #include <vector>
+#include <algorithm>
 
 #undef main()
 
@@ -26,6 +27,7 @@ namespace MCG
 	void Cleanup();
 
 	int ShowAndHold();
-
 }
+
+float clamp(float n, float lower, float upper);
 #endif

@@ -18,7 +18,6 @@ public:
 
 private:
 	static const int fov = M_PI / 3.;
-
 };
 
 #endif

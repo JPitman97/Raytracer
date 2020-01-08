@@ -7,12 +7,16 @@ class Material
 {
 public:
 	Material();
-	Material(const glm::vec3& colour);
+	Material(const glm::fvec2& albedo, const glm::vec3& colour, const float& spec);
 
-	glm::ivec3 getDiffuseColour() const;
+	glm::fvec2 getAlbedo() const;
+	glm::vec3 getDiffuseColour() const;
+	float getSpecularExponent() const;
 
 private:
-	glm::ivec3 diffuse_colour;
+	glm::fvec2 albedo;
+	glm::vec3 diffuse_colour;
+	float specular_exponent;
 };
 
 #endif

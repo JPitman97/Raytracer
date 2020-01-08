@@ -4,7 +4,9 @@
 #include "GLM/glm.hpp"
 #include "Sphere.h"
 #include <vector>
+#include <algorithm>
 #include "Light.h"
+#include "Utils.h"
 
 class Ray
 {
@@ -19,5 +21,6 @@ public:
 	glm::vec3& getDirection();
 	glm::ivec3 castRay(const glm::vec3& _origin, const glm::vec3& _direction, std::vector<Sphere>& _spheres, const std::vector<Light>& _lights);
 	bool sceneIntersects(const glm::vec3& _origin, const glm::vec3& _direction, std::vector<Sphere>& _spheres, glm::vec3& _hit, glm::vec3& N, Material& _material) const;
+	glm::vec3 reflect(const glm::vec3& I, const glm::vec3& N);
 };
 #endif

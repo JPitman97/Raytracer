@@ -226,3 +226,7 @@ int MCG::ShowAndHold()
 	Cleanup();
 	return 0;
 }
+
+float clamp(float n, float lower, float upper) {
+	return std::max(lower, std::min(n, upper));
+}
