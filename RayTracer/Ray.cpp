@@ -18,13 +18,15 @@ Ray::Ray(const glm::vec3& _origin, const glm::vec3& _direction, const Sphere& _s
 {
 }
 
-glm::ivec3 Ray::castRay(const glm::vec3& _origin, const glm::vec3& _direction, std::vector<Sphere>& _spheres, const std::vector<Light>& _lights)
+glm::vec3 Ray::castRay(const glm::vec3& _origin, const glm::vec3& _direction, std::vector<Sphere>& _spheres, const std::vector<Light>& _lights) //TODO Fix "point"
 {
 	glm::vec3 point, N;
 	Material material;
 
 	if (!sceneIntersects(_origin, _direction, _spheres, point, N, material))
-		return glm::ivec3(0, 0, 0); //Background 
+	{
+		return glm::vec3(0, 0, 0); //Background 
+	}
 
 	float diffuse_light_intensity = 0, specular_light_intensity = 0;
 	for (auto& light : _lights)
@@ -32,21 +34,20 @@ glm::ivec3 Ray::castRay(const glm::vec3& _origin, const glm::vec3& _direction, s
 		glm::vec3 light_dir = glm::normalize(light.getPosition() - point);
 		diffuse_light_intensity += light.getIntensity() * std::max(0.f, glm::dot(light_dir, N));
 
-		specular_light_intensity += clamp(powf(std::max(0.0f, reflect(light_dir, N).x * _direction.x), material.getSpecularExponent()) * light.getIntensity(), 0, 255);
+		glm::vec3 reflectionVector = glm::normalize(glm::reflect(light_dir,N));
+
+		specular_light_intensity += powf(std::max(0.0f,  glm::dot(reflectionVector, _direction)), material.getSpecularExponent()) * light.getIntensity();
 	}
 
-	/*return glm::ivec3(material.getDiffuseColour().x * diffuse_light_intensity,
-	                  material.getDiffuseColour().y * diffuse_light_intensity,
-	                  material.getDiffuseColour().z * diffuse_light_intensity);*/
-	//return glm::ivec3(material.getDiffuseColour());
-	return material.getDiffuseColour() * diffuse_light_intensity * material.getAlbedo()[0] + glm::vec3(1., 1., 1.) * specular_light_intensity * material.getAlbedo()[1];
+	glm::vec3 finalColour = material.getDiffuseColour() * diffuse_light_intensity + specular_light_intensity;
+	return finalColour;
 
 }
 
-bool Ray::sceneIntersects(const glm::vec3& _origin, const glm::vec3& _direction, std::vector<Sphere>& _spheres,
+bool Ray::sceneIntersects(const glm::vec3& _origin, const glm::vec3& _direction, std::vector<Sphere>& _spheres, //TODO Error in this method
                           glm::vec3& _hit, glm::vec3& N, Material& _material) const
 {
-	float spheres_dist = 0;
+	float spheres_dist = 1000;
 	for (auto& sphere : _spheres)
 	{
 		float dist_i;
@@ -59,9 +60,4 @@ bool Ray::sceneIntersects(const glm::vec3& _origin, const glm::vec3& _direction,
 		}
 	}
 	return spheres_dist < 1000;
-}
-
-glm::vec3 Ray::reflect(const glm::vec3& I, const glm::vec3& N)
-{
-	return I - N * 2.f * (I * N);
 }

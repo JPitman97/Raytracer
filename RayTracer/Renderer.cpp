@@ -22,7 +22,8 @@ void Renderer::renderThrdQ1(int j, int i, std::vector<Sphere>& _spheres, std::ve
 			float y = -(2 * (height + 0.5) / (float)HEIGHT - 1) * tan(fov / 2.);
 			glm::vec3 dir = glm::normalize(glm::vec3(x, y, -1));
 			Ray ray;
-			MCG::DrawPixel(glm::ivec2(width, height), ray.castRay(glm::vec3(0, 0, 0), dir, _spheres, _lights));
+			glm::vec3 col = glm::clamp(ray.castRay(glm::vec3(0, 0, 0), dir, _spheres, _lights),0.0f,1.0f) * 255.0f;
+			MCG::DrawPixel(glm::ivec2(width, height), col);
 		}
 	}
 }
