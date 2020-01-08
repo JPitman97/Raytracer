@@ -2,17 +2,23 @@
 
 void Renderer::render(std::vector<Sphere>& _spheres, std::vector<Light>& _lights)
 {
-	std::thread rThread1(renderThrdQ1, HEIGHT / 2, WIDTH / 2, std::ref(_spheres), std::ref(_lights));
-	std::thread rThread2(renderThrdQ1, HEIGHT / 2 + HEIGHT / 2, WIDTH / 2, std::ref(_spheres), std::ref(_lights));
-	std::thread rThread3(renderThrdQ1, HEIGHT / 2, WIDTH / 2 + WIDTH / 2, std::ref(_spheres), std::ref(_lights));
-	std::thread rThread4(renderThrdQ1, HEIGHT / 2 + HEIGHT / 2, WIDTH / 2 + WIDTH / 2, std::ref(_spheres), std::ref(_lights));
-	rThread1.join();
-	rThread2.join();
-	rThread3.join();
-	rThread4.join();
+	unsigned int coreAmount = std::thread::hardware_concurrency();
+	std::cout << coreAmount << std::endl;
+	unsigned int xSplit = WIDTH / coreAmount;
+	unsigned int ySplit = HEIGHT / coreAmount;
+	std::vector<std::thread> threads;
+	for (size_t i = 1; i <= coreAmount + 1; i++)
+	{
+		std::thread rThread();
+		threads.emplace_back(RenderThread, ySplit * i, xSplit * i, std::ref(_spheres), std::ref(_lights));
+	}
+	for (size_t i = 0; i < threads.size(); i++)
+	{
+		threads[i].join();
+	}
 }
 
-void Renderer::renderThrdQ1(int j, int i, std::vector<Sphere>& _spheres, std::vector<Light>& _lights)
+void Renderer::RenderThread(int j, int i, std::vector<Sphere>& _spheres, std::vector<Light>& _lights)
 {
 	for (int height = 0; height < j; height++)
 	{
