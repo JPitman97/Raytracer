@@ -14,7 +14,7 @@
 class Renderer
 {
 public:
-	static void renderThread(int j, int i, std::vector<Sphere>& _spheres, std::vector<Light>& _lights);
+	static void renderThread(int xStart, int xEnd, std::vector<Sphere>& _spheres, std::vector<Light>& _lights);
 
 private:
 	//FOV used to create the viewspace

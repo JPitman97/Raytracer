@@ -8,6 +8,7 @@
 #include "Renderer.h"
 #include <thread>
 #include <chrono>
+#include <list>
 
 class ThreadManager
 {
@@ -20,7 +21,7 @@ private:
 	unsigned int threadAmount = 0;
 	unsigned int xSplit = 0;
 	unsigned int ySplit = 0;
-	std::vector<std::thread> threads;
+	std::list<std::thread> threads;
 
 	//Methods
 	void renderWithThreads(int _threadCount, std::vector<Sphere>& _spheres, std::vector<Light>& _lights);

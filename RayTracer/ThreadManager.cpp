@@ -29,30 +29,27 @@ void ThreadManager::renderWithThreads(int _threadCount, std::vector<Sphere>& _sp
 {
 	std::cout << "Rendering with " << _threadCount << " threads" << std::endl;
 
-	xSplit = WIDTH / _threadCount; //Divide the screen into sections
-	ySplit = HEIGHT / _threadCount; //Each thread will handle a section of the screen
+	xSplit = WIDTH / _threadCount; //Each thread will handle a section of the screen
 
 	auto start = std::chrono::high_resolution_clock::now(); //Start the timer to record the render length
 
 
-	for (int i = 1; i <= _threadCount; i++) //Loop through the total threads
+	for (int i = 0; i <= _threadCount; i++) //Loop through the total threads
 	{
 		//Call the thread and pass in the sections to be rendered, along with the references to the spheres and lights
-		threads.emplace_back(Renderer::renderThread, ySplit * i, xSplit * i, std::ref(_spheres), std::ref(_lights));
+		threads.emplace_back(Renderer::renderThread, xSplit * i, xSplit * (i + 1), std::ref(_spheres), std::ref(_lights));
 	}
-
-	auto end = std::chrono::high_resolution_clock::now(); //End the timer
-
-	int milli = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-	//Print the time in seconds and milliseconds
-	std::cout << "Finished rendering frame, Duration: " << milli / 1000 << " seconds or " << milli << " milliseconds" << std::endl;
 
 	//Loop through all threads and join them back up
 	for (auto& thread : threads)
 	{
 		thread.join();
 	}
-	threads.clear(); //Clear the threads vector
+	threads.clear(); //Clear the threads list
 
-	
+	auto end = std::chrono::high_resolution_clock::now(); //End the timer
+
+	int milli = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+	//Print the time in seconds and milliseconds
+	std::cout << "Finished rendering frame, Duration: " << milli / 1000 << " seconds or " << milli << " milliseconds" << std::endl;
 }

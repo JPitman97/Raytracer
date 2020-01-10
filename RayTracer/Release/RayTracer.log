@@ -1,20 +1,16 @@
-﻿  Ray.cpp
-g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\utils.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Renderer.cpp
+﻿  Renderer.cpp
 g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\utils.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\renderer.h(21): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
-g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\renderer.cpp(15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\renderer.cpp(16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\renderer.cpp(17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   ThreadManager.cpp
 g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\utils.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\renderer.h(21): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
-g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\threadmanager.cpp(46): warning C4244: 'initializing': conversion from '_Rep' to 'int', possible loss of data
+g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\threadmanager.cpp(52): warning C4244: 'initializing': conversion from '_Rep' to 'int', possible loss of data
           with
           [
               _Rep=__int64
           ]
-  Utils.cpp
-g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\utils.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   main.cpp
 g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\utils.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\renderer.h(21): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
@@ -48,8 +44,8 @@ c:\program files (x86)\microsoft visual studio\2019\community\vc\tools\msvc\14.1
               _Ty=Light
           ]
   Generating code
-  16 of 400 functions ( 4.0%) were compiled, the rest were copied from previous compilation.
+  1 of 386 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    9 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   RayTracer.vcxproj -> G:\Documents\University Work\Graphics and Computational Programming\RayTracer\Raytracer\RayTracer\Release\RayTracer.exe

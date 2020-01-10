@@ -2,14 +2,15 @@
 
 //Mutex used to lock the Render methods while being accessed, to stop multiple threads from trying to draw at the same time
 std::mutex renderMutex;
+int heightT = 0, widthT = 0;
 
 //Main render method, parameters are j (Height) and i (Width), plus the spheres and lights vectors created in main()
-void Renderer::renderThread(int j, int i, std::vector<Sphere>& _spheres, std::vector<Light>& _lights)
+void Renderer::renderThread(int xStart, int xEnd, std::vector<Sphere>& _spheres, std::vector<Light>& _lights)
 {
 	//Loop through both height and width, going in rows
-	for (int height = 0; height < j; height++)
+	for (int height = 0; height < HEIGHT; height++)
 	{
-		for (int width = 0; width < i; width++)
+		for (int width = xStart; width < xEnd; width++)
 		{
 			//Create an arc using tan which becomes the viewspace 
 			float x = (2 * (width + 0.5) / static_cast<float>(WIDTH) - 1) * tan(fov / 2.) * WIDTH / static_cast<float>(HEIGHT);
