@@ -1,38 +1,55 @@
-﻿  main.cpp
-\\bournemouth.ac.uk\data\student\home\scitech\s5067868\final-year-work\graphics and computational graphics\raytracer\raytracer\utils.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-\\bournemouth.ac.uk\data\student\home\scitech\s5067868\final-year-work\graphics and computational graphics\raytracer\raytracer\renderer.h(20): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
-c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\xmemory0(881): warning C4244: 'argument': conversion from '_Ty' to 'const float', possible loss of data
+﻿  Ray.cpp
+g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\utils.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Renderer.cpp
+g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\utils.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\renderer.h(21): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\renderer.cpp(15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\renderer.cpp(16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  ThreadManager.cpp
+g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\utils.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\renderer.h(21): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\threadmanager.cpp(46): warning C4244: 'initializing': conversion from '_Rep' to 'int', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+  Utils.cpp
+g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\utils.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  main.cpp
+g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\utils.h(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\renderer.h(21): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+c:\program files (x86)\microsoft visual studio\2019\community\vc\tools\msvc\14.16.27023\include\xmemory0(881): warning C4244: 'argument': conversion from '_Ty' to 'const float', possible loss of data
           with
           [
               _Ty=double
           ]
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(900): note: see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,glm::tvec3<float,0>,double>(_Alloc &,_Objty *const ,glm::tvec3<float,0> &&,double &&)' being compiled
+  c:\program files (x86)\microsoft visual studio\2019\community\vc\tools\msvc\14.16.27023\include\vector(900): note: see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,glm::tvec3<float,0>,double>(_Alloc &,_Objty *const ,glm::tvec3<float,0> &&,double &&)' being compiled
           with
           [
               _Alloc=std::allocator<Light>,
               _Ty=Light,
               _Objty=Light
           ]
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(902): note: see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,glm::tvec3<float,0>,double>(_Alloc &,_Objty *const ,glm::tvec3<float,0> &&,double &&)' being compiled
+  c:\program files (x86)\microsoft visual studio\2019\community\vc\tools\msvc\14.16.27023\include\vector(902): note: see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,glm::tvec3<float,0>,double>(_Alloc &,_Objty *const ,glm::tvec3<float,0> &&,double &&)' being compiled
           with
           [
               _Alloc=std::allocator<Light>,
               _Ty=Light,
               _Objty=Light
           ]
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(916): note: see reference to function template instantiation 'void std::vector<Light,std::allocator<_Ty>>::_Emplace_back_with_unused_capacity<glm::tvec3<float,0>,double>(glm::tvec3<float,0> &&,double &&)' being compiled
+  c:\program files (x86)\microsoft visual studio\2019\community\vc\tools\msvc\14.16.27023\include\vector(916): note: see reference to function template instantiation 'void std::vector<Light,std::allocator<_Ty>>::_Emplace_back_with_unused_capacity<glm::tvec3<float,0>,double>(glm::tvec3<float,0> &&,double &&)' being compiled
           with
           [
               _Ty=Light
           ]
-  \\bournemouth.ac.uk\data\student\home\scitech\s5067868\final-year-work\graphics and computational graphics\raytracer\raytracer\main.cpp(30): note: see reference to function template instantiation 'void std::vector<Light,std::allocator<_Ty>>::emplace_back<glm::vec3,double>(glm::vec3 &&,double &&)' being compiled
+  g:\documents\university work\graphics and computational programming\raytracer\raytracer\raytracer\raytracer\main.cpp(33): note: see reference to function template instantiation 'void std::vector<Light,std::allocator<_Ty>>::emplace_back<glm::vec3,double>(glm::vec3 &&,double &&)' being compiled
           with
           [
               _Ty=Light
           ]
   Generating code
-  1 of 386 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  16 of 400 functions ( 4.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    9 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  RayTracer.vcxproj -> \\bournemouth.ac.uk\data\Student\Home\SciTech\s5067868\Final-Year-Work\Graphics and Computational Graphics\Raytracer\Release\RayTracer.exe
+  RayTracer.vcxproj -> G:\Documents\University Work\Graphics and Computational Programming\RayTracer\Raytracer\RayTracer\Release\RayTracer.exe

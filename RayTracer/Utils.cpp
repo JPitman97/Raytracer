@@ -74,16 +74,13 @@ void MCG::SetBackground(glm::ivec3 colour)
 	// Clear the entire screen to our selected colour
 	SDL_RenderClear(_renderer);
 }
-std::mutex renderLock;
 
 void MCG::DrawPixel(glm::ivec2 position, glm::ivec3 colour)
 {
-	renderLock.lock();
 	// Set the colour for drawing
 	SDL_SetRenderDrawColor(_renderer, colour.r, colour.g, colour.b, 255);
 	// Draw our pixel
 	SDL_RenderDrawPoint(_renderer, position.x, position.y);
-	renderLock.unlock();
 }
 
 bool MCG::ProcessFrame()
@@ -225,8 +222,4 @@ int MCG::ShowAndHold()
 
 	Cleanup();
 	return 0;
-}
-
-float clamp(float n, float lower, float upper) {
-	return std::max(lower, std::min(n, upper));
 }

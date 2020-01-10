@@ -8,8 +8,6 @@ class Sphere
 {
 private:
 	glm::vec3 center;
-	
-private:
 	double radius;
 	Material material;
 
@@ -17,12 +15,12 @@ public:
 	Sphere();
 	Sphere(const glm::vec3& _center, const double& _radius, const Material& _material);
 
-	void setSphereCenter(const glm::vec3& center);
+	void setSphereCenter(const glm::vec3& _center);
 	glm::vec3& getSphereCenter();
 	double& getSphereRadius();
-	Material getSphereMaterial();
+	Material getSphereMaterial() const;
 
-	bool findIntersection(const glm::vec3& _origin, const glm::vec3& _direction, float& t0);
+	bool findIntersection(const glm::vec3& _origin, const glm::vec3& _direction, float& _t0) const;
 };
 
 #endif

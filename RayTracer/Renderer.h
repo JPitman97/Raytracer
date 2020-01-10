@@ -6,17 +6,18 @@
 #include "Light.h"
 #include "Utils.h"
 #include "Ray.h"
+#include "ThreadManager.h"
 #include <thread>
 #include <SDL/SDL_stdinc.h>
+#include <mutex>
 
 class Renderer
 {
 public:
-	static void render(std::vector<Sphere>& _spheres, std::vector<Light>& _lights);
-
-	static void RenderThread(int j, int i, std::vector<Sphere>& _spheres, std::vector<Light>& _lights);
+	static void renderThread(int j, int i, std::vector<Sphere>& _spheres, std::vector<Light>& _lights);
 
 private:
+	//FOV used to create the viewspace
 	static const int fov = M_PI / 3.;
 };
 
